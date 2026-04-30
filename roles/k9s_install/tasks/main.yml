@@ -7,7 +7,7 @@
 
 - name: Скачивание K9s пакета
   get_url:
-    url: "https://github.com/derailed/k9s/releases/download/{{ k9s_version }}/k9s_linux_arm64.deb"
+    url: "https://github.com/derailed/k9s/releases/download/{{ k9s_version }}/k9s_linux_{{ arch }}.deb"
     dest: "/tmp/k9s_{{ k9s_version }}.deb"
   when: k9s_check.rc != 0
 
