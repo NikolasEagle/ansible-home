@@ -1,0 +1,10 @@
+---
+- name: Применение манифестов
+  command: kubectl apply -f "{{ mount_path }}"
+  become_user: "{{ admin_user }}"
+  register: kubectl_apply
+  when: mount_path is defined
+
+- name: Вывод результата применения манифестов
+  debug:
+    msg: "Применены манифесты из {{ mount_path }}"
