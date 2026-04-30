@@ -1,0 +1,26 @@
+---
+- name: Создание директории манифестов k3s для {{ admin_user }}
+  file:
+    path: "/kuber"
+    state: directory
+    owner: "{{ admin_user }}"
+    group: "{{ admin_user }}"
+    mode: "0755"
+
+- name: Проверка доступности NFS сервера
+  wait_for:
+    host: "{{ nfs_server_ip }}"
+    port: "{{ nfs_server_port }}"
+    timeout: 5
+    delay: 1
+  ignore_errors: yes
+  register: nfs_available
+
+- name: Создать точку монтирования и добавить в fstab
+  mount:
+    path: /kuber
+    src: "{{ nfs_server_ip }}:/data/kuber_test"
+    fstype: nfs
+    opts: "auto,nofail,noatime,nolock,intr,tcp,actimeo=1800"
+    state: mounted
+  when: nfs_available is success
