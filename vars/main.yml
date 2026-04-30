@@ -1,0 +1,13 @@
+admin_user: handel
+admin_user_home: /home/handel
+
+github_owner: NikolasEagle
+github_repository: fluxcd_home_cluster_test
+github_branch: main
+flux_path: ./clusters/staging
+
+mount_path: /kuber
+
+kubectl_version: v1.36.0
+
+k9s_version: v0.50.18
