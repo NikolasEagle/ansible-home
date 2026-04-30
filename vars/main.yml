@@ -6,7 +6,11 @@ github_repository: fluxcd_home_cluster_test
 github_branch: main
 flux_path: ./clusters/staging
 
+nfs_server_ip: 152.152.152.3
+nfs_server_port: 2049
 mount_path: /kuber
+
+arch: amd64
 
 kubectl_version: v1.36.0
 
